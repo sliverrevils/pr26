@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+    --text-32: 32px;
+    /*COLORS*/
+
+    --color-f-white: ##ffff;
+    --color-f-black: ##00000;
+
+    --color-f-default: #616a72;
+
+    --color-f-purple-light: #9c9bc2;
+    --color-f-purple: #7876f2;
+    --color-f-purple-accent: #6355a4;
+    --color-f-purple-pressed: #605edc;
+    --color-f-purple-transparent: #e9e7ff;
+    --color-f-purple-truly-transparent: #7876f2; /* opacity: 40 */
+    --color-f-complexity-purple: #9747ff;
+
+    --color-f-light: #8e8e8e;
+
+    --color-f-footer: #323b47;
+
+    --color-f-gray-brown: #837e95;
+    --color-f-gray-like: #877777;
+    --color-f-gray-button-disabled: #c2c2c2;
+    --color-f-gray-5: #e1e6ee;
+    --color-f-gray-4: #f3f6fb;
+    --color-f-gray-3: #b7b7b7;
+    --color-f-gray-2: #d9d9d9;
+    --color-f-gray-1: #f1f1f1;
+    --color-f-gray-0: #f7f8f8;
+
+    --color-f-yellow-main: #fff730;
+
+    --color-f-orange-standart: #ffa500;
+    --color-f-orange-speed: #ff912b;
+
+    --color-f-green-dark: #3e7a75;
+    --color-f-green-pressed: #07ac53;
+    --color-f-green-distance: #3bc21f;
+    --color-f-green-accuracy: #2cd429;
+    --color-f-green-bright: #5eff36;
+    --color-f-green-main: #7fccb6;
+    --color-f-green-transparent: #a8e0dc;
+    --color-f-green-transparent2: #d6efed;
+
+    --color-f-red-main: #fa5c7c;
+    --color-f-red-like: #f27d76;
+    --color-f-red-transparent: #ffe1e7;
+
+    --color-f-: #fff730;
+
+    /* 
+    GRADIENT
+    bg-(image:--gradient-purple-top-bottom)
+     */
+    --gradient-PurpleTopBottom: linear-gradient(180deg, #7876f2 16%, #9b70d3 80%);
+    --gradient-PurpleLeftRight: linear-gradient(90deg, #7876f2 16%, #9b70d3 80%);
+    --gradient-PurpleGreenTopBottom: linear-gradient(90deg, #7876f2 0%, #7fccb6 100%);
+    --gradient-PurpleLeftRight: linear-gradient(90deg, #7876f2 0%, #c58bf2 100%);
+    --gradient-PurpleIconLeftRightIcon: linear-gradient(90deg, #9dceff 0%, #92a3fd 100%);
+    --gradient-PurpleIconTopBottom: linear-gradient(90deg, #7876f2 0%, #fa5c7c 100%);
+    --gradient-PurpleIcon: linear-gradient(90deg, #a58bf2 0%, #eea4ce 100%);
+
+    /* CONTAINER */
+    --container-padding: 16px;
+
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1200px;
+    --container-2xl: 1200px;
+    --container-max: 1200px;
+}
+
+@layer components {
+    .btn-40 {
+        @apply h-10 font-medium flex items-center px-8  rounded-full cursor-pointer        
+        disabled:opacity-40 disabled:cursor-not-allowed;
+    }
+    .btn-blue-40 {
+        @apply bg-f-purple h-10  text-white font-medium flex items-center px-8  rounded-full cursor-pointer
+        hover:bg-f-purple-pressed
+        disabled:opacity-40 disabled:cursor-not-allowed;
+    }
+
+    .btn-white-40 {
+        @apply bg-f-white h-10  text-f-purple-pressed border border-f-purple font-medium flex items-center px-8  rounded-full cursor-pointer
+        hover:text-f-purple-pressed hover:border-f-purple-pressed
+        disabled:opacity-40 disabled:cursor-not-allowed;
+    }
+    .btn-blue-50 {
+        @apply bg-f-purple h-12.5  text-white font-medium flex items-center px-8  rounded-full cursor-pointer
+        hover:bg-f-purple-pressed
+        disabled:opacity-40 disabled:cursor-not-allowed;
+    }
+    .btn-white-50 {
+        @apply bg-f-white h-12.5  text-f-purple-pressed border border-f-purple font-medium flex items-center px-8  rounded-full cursor-pointer
+        hover:text-f-purple-pressed hover:border-f-purple-pressed
+        disabled:opacity-40 disabled:cursor-not-allowed;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} /* Tailwind 4: создаём утилиту */
+@utility animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+}
