@@ -1,10 +1,15 @@
-import PlayerCard from "@/components/ui/PlayerCard/PlayerCard";
-import { findTopPlayers } from "@/services/playerService";
+"use client";
 import ContentLine from "../ContentLine/ContentLine";
+import { IPlayerSearch } from "@/mongo/models/playersSearchModel";
+import { Avatar } from "@/components/ui/Avatar/Avatar";
 
-export default async function TopPlayers({ forMain = true }: { forMain?: boolean }) {
-    const players = await findTopPlayers();
-
+export default function TopPlayers({
+    players,
+    forMain = true,
+}: {
+    players: IPlayerSearch[];
+    forMain?: boolean;
+}) {
     return (
         <div className="container self-center  flex flex-col">
             {forMain && (
@@ -15,8 +20,8 @@ export default async function TopPlayers({ forMain = true }: { forMain?: boolean
                 />
             )}
             <div className="flex flex-wrap gap-x-16 gap-y-4 justify-center ">
-                {players.map((palyer) => (
-                    <PlayerCard key={palyer.alias} player={palyer} foMain={forMain} />
+                {players.map((player) => (
+                    <Avatar key={player.alias} human={player} size="oponent" showName link />
                 ))}
             </div>
         </div>

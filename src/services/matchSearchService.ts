@@ -75,10 +75,20 @@ export async function findFilteredMatches({
             .lean();
 
         const res = normalizeDbRes<IMatchesSearch[]>(docs);
-        console.log("➡️", searchParams, res.length);
-
         return res;
     } catch (error) {
         return [];
+    }
+}
+
+export async function findMatchByVideoId(videoId: string) {
+    try {
+        connectDB();
+        const matchDoc = await MatchesSearchModel.findOne({ videoId });
+        const match = normalizeDbRes<IMatchesSearch | null>(matchDoc);
+        if (!match) return null;
+        return match;
+    } catch (error) {
+        return null;
     }
 }

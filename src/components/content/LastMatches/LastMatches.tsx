@@ -10,7 +10,7 @@ export const LastMatches = async ({ count }: { count: number }) => {
             <ContentLine imgUrl="/svg/new_matches.svg" textGray="New" textBlue="matches" />
             <div className="grid grid-cols-3 gap-4">
                 {lastMathes.map((match) => (
-                    <Match match={match} key={match._id} />
+                    <Match match={match} key={match._id} linkedOponents={false} />
                 ))}
             </div>
         </div>

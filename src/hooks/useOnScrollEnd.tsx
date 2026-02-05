@@ -15,7 +15,6 @@ export function useScrollEndOnBody(
                 if (!footerHightRef.current) {
                     const footerHight =
                         document.querySelector("footer")?.getClientRects()[0].height || 0;
-                    console.log(footerHight);
                     if (footerHight) {
                         footerHightRef.current = footerHight;
                     }

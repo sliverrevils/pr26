@@ -42,7 +42,7 @@ export interface IPlayer {
     rate21: number;
     rate22: number;
 
-    fargo: string; // ❗ по факту string, хотя должно быть number
+    fargo: number; // ❗ по факту string, хотя должно быть number
 
     shots: number;
     shots9: number;

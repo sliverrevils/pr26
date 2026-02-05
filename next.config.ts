@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
         @reference "tailwindcss";        
         `,
     },
+
     turbopack: {
         rules: {
             "*.svg": {

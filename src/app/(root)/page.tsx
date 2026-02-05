@@ -3,9 +3,11 @@ import MainSlider from "@/components/content/MainSlider/MainSlider";
 import Possibilities from "@/components/content/Possibilities/Possibilities";
 import RegisterNow from "@/components/content/RegisterNow/RegisterNow";
 import TopPlayers from "@/components/content/TopPlayers/TopPlayers";
+import { findTopPlayers } from "@/services/playerService";
 import { Suspense } from "react";
 
-export default function Home() {
+export default async function Home() {
+    const players = await findTopPlayers();
     return (
         <div className=" w-full flex flex-col gap-12 pb-11 bg-white">
             <MainSlider />
@@ -14,7 +16,7 @@ export default function Home() {
                     <LastMatches count={9} />
                 </Suspense>
 
-                <TopPlayers />
+                <TopPlayers players={players} forMain />
 
                 <RegisterNow />
 

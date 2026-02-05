@@ -1,9 +1,13 @@
+"use client";
 import { Flag } from "@/components/common/Flag/Flag";
 import { ArrowTopRightGreen, StarForString } from "@/icons/iconsSvg";
 import { IPlayer } from "@/mongo/models/playerModel";
 import Image from "next/image";
+import { Avatar } from "../Avatar/Avatar";
+import { IPlayerSearch } from "@/mongo/models/playersSearchModel";
+import { IUser } from "@/mongo/models/userModel";
 
-export default function PlayerInfo({ player }: { player: IPlayer }) {
+export default function PlayerInfo({ player }: { player: Partial<IPlayerSearch & IUser> }) {
     return (
         <div className="flex flex-col gap-9 rounded-2xl bg-white overflow-hidden">
             <div className=" h-40 bg-(image:--gradient-PurpleTopBottom) relative">
@@ -15,20 +19,7 @@ export default function PlayerInfo({ player }: { player: IPlayer }) {
                     className="opacity-20 w-full h-full object-cover absolute"
                 />
                 <div className="flex items-start gap-7  translate-y-7 w-87 h-full px-5">
-                    <div className="flex-1 aspect-square   rounded-full outline-6 outline-white bg-f-default overflow-hidden">
-                        <Image
-                            src={
-                                player?.avatar200 ||
-                                player.avatar400 ||
-                                player.avatar ||
-                                "/png/userProfileDefault.png"
-                            }
-                            width={386}
-                            height={332}
-                            alt="playerAvatar"
-                            className="w-full h-full object-cover opacity-90"
-                        />
-                    </div>
+                    <Avatar human={player} size="big" showTop={false} />
                     <div className=" flex-1 h-full flex justify-between items-center -translate-y-4 text-white">
                         <div className="relative">
                             <div className="font-semibold">
@@ -43,8 +34,8 @@ export default function PlayerInfo({ player }: { player: IPlayer }) {
             </div>
             <div className="flex flex-col gap-1 items-center p-5 pt-0 text-f-default">
                 <div className="flex items-center gap-2 text-lg font-bold">
-                    {player.country && (
-                        <Flag code={player.country} sizeBig className="rounded-sm" />
+                    {player.countryCode && (
+                        <Flag code={player.countryCode} sizeBig className="rounded-sm" />
                     )}
                     <div>{player.name}</div>
                 </div>

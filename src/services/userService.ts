@@ -8,7 +8,9 @@ import { IActionResult } from "@/types/types";
 import bcrypt from "bcryptjs";
 import { revalidatePath } from "next/cache";
 import { Binary } from "mongodb";
-import { redirect } from "next/navigation";
+import { redirect } from "next/dist/server/api-utils";
+import { PATHES } from "@/config/pathes";
+import { IPlayerSearch, PlayerSearchModel } from "@/mongo/models/playersSearchModel";
 
 //! SING UP
 type IUserCreateProps = {
@@ -51,6 +53,51 @@ export const getCurrentUser = async () => {
         return null;
     }
 };
+export const getCurrentUserWithFavorites = async () => {
+    const session = await auth();
+
+    if (!session?.user) {
+        return null;
+    }
+    try {
+        await connectDB();
+        const user = await UserModel.findOne({ _id: session.user.id }).populate("favoritePlayers");
+
+        return normalizeDbRes<IUser | null>(user);
+    } catch (error) {
+        return null;
+    }
+};
+
+export const addToFavoritePlayers = async (playerId: string): Promise<IActionResult> => {
+    const session = await auth();
+
+    if (!session?.user) {
+        return { type: "error", message: "Auth error." };
+    }
+    try {
+        await connectDB();
+        const user = await UserModel.findOne({ _id: session.user.id });
+        if (!user) return { type: "error", message: "Auth error." };
+        if (!user?.favoritePlayers) {
+            user!.favoritePlayers = [playerId] as any;
+        } else {
+            if (user.favoritePlayers.length <= 3) {
+                user.favoritePlayers = [...user.favoritePlayers, playerId as any];
+            } else {
+                const [first, ...other] = user.favoritePlayers;
+                user.favoritePlayers = [...other, playerId as any];
+            }
+        }
+        await user.save();
+        revalidatePath("/");
+        const player = await PlayerSearchModel.findOne({ _id: playerId });
+
+        return { type: "success", message: `${player?.name} now your favorit player` };
+    } catch (error) {
+        return { type: "error", message: "Operation error, please try again later." };
+    }
+};
 
 export async function checkEmailExists(email: string) {
     await connectDB();
@@ -86,7 +133,7 @@ export const updateUser = async ({
 }): Promise<IActionResult> => {
     const session = await auth();
     try {
-        connectDB();
+        await connectDB();
         if (session) {
             const user = await UserModel.findOne({ email: session.user.email });
             if (!user)
@@ -116,7 +163,7 @@ export const changePassword = async ({
 }): Promise<IActionResult> => {
     const session = await auth();
     try {
-        connectDB();
+        await connectDB();
         if (session) {
             const user = await UserModel.findOne({ email: session.user.email });
             if (!user)
@@ -131,5 +178,43 @@ export const changePassword = async ({
         return { type: "error", message: "Operation error, please try again later." };
     } catch (error) {
         return { type: "error", message: "Operation error, please try again later." };
+    }
+};
+
+export type IUserAfterSearch = Pick<IUser, "_id" | "avatar200" | "countryCode" | "gender" | "name">;
+
+export async function searchUsersByName(search: string): Promise<IUserAfterSearch[]> {
+    if (!search.trim()) return [];
+    try {
+        await connectDB();
+        const usersDocs = await UserModel.find(
+            {
+                $or: [{ role: "user" }, { role: { $exists: false } }],
+                name: { $regex: search, $options: "i" },
+            },
+            {
+                _id: 1,
+                avatar200: 1,
+                countryCode: 1,
+                gender: 1,
+                name: 1,
+            },
+        )
+            .limit(20) // чтобы не тянуть слишком много
+            .lean();
+        const users = normalizeDbRes<IUserAfterSearch[]>(usersDocs);
+        return users;
+    } catch (error) {
+        return [];
+    }
+}
+
+export const findUserByAlias = async (userId: string) => {
+    try {
+        await connectDB();
+        const user = await UserModel.findOne({ _id: userId });
+        return normalizeDbRes<IUser | null>(user);
+    } catch (error) {
+        return null;
     }
 };

@@ -8,16 +8,30 @@ import { IUser } from "@/mongo/models/userModel";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import * as motion from "framer-motion/client";
+import { DOMAttributes, useState } from "react";
 
 export default function ProfileMenu({ user }: { user: IUser | null }) {
     const { profileMenu } = useMenu();
+    const [selectedTitle, setSelectedTitle] = useState<string>(
+        profileMenu.find((el) => el.selected)?.title ?? "",
+    );
 
     if (!user) return <AuthToggle />;
 
     return (
         <View className="flex flex-col p-5 rounded-2xl bg-white w-full" gap={false}>
             <div>
-                {profileMenu.map(MenuItem)}
+                {profileMenu.map(({ Icon, path, title }, idx) => (
+                    <MenuItem
+                        key={path + "_prof_menus"}
+                        Icon={Icon}
+                        path={path}
+                        title={title}
+                        selected={selectedTitle === title}
+                        idx={idx}
+                        onClick={(e) => setSelectedTitle(() => title)}
+                    />
+                ))}
 
                 <div className="flex items-center gap-4 h-12.5 px-4 cursor-pointer rounded-xl">
                     <LogoutSvg />
@@ -35,8 +49,15 @@ export default function ProfileMenu({ user }: { user: IUser | null }) {
     );
 }
 
-const MenuItem = ({ path, selected, title, Icon }: IProfileMenuItem, idx: number) => (
-    <div key={path + "_prof_menus"}>
+const MenuItem = ({
+    path,
+    selected,
+    title,
+    Icon,
+    idx,
+    ...divProps
+}: DOMAttributes<HTMLDivElement> & IProfileMenuItem & { idx: number }) => (
+    <div {...divProps}>
         <Link
             href={path}
             className="relative  flex items-center gap-4  px-4 py-4.5 cursor-pointer rounded-xl"
@@ -56,5 +77,7 @@ const SelectedItem = () => (
         layoutId="profile-menu-highlight"
         className="absolute inset-0 rounded-xl bg-f-purple-transparent"
         transition={{ type: "spring", stiffness: 350, damping: 50 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
     />
 );

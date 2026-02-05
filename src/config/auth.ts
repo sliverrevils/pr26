@@ -1,11 +1,8 @@
 import NextAuth, { CredentialsSignin, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-
-import bcrypt from "bcryptjs";
 import { connectDB } from "@/mongo/connect";
 import { IUserRole, UserModel } from "@/mongo/models/userModel";
 import { verifyPassword } from "@/helpers/passwordHelper";
-import { Binary } from "mongodb";
 
 class NotConfirmedEmailError extends CredentialsSignin {
     code = "email_not_confirmed";

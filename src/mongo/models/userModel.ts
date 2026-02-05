@@ -1,6 +1,7 @@
 import { Model, Schema, model, models } from "mongoose";
 import { Binary } from "mongodb";
 import { nanoid } from "nanoid";
+import { IPlayerSearch } from "./playersSearchModel";
 
 export type IUserRole = "user" | "admin" | "super";
 
@@ -52,6 +53,7 @@ export type IUser = {
     lengthUnit?: string;
 
     favoritePlayer?: string;
+    favoritePlayers?: IPlayerSearch[];
 
     shareWorkoutStats?: boolean;
 
@@ -184,6 +186,12 @@ const UserSchema = new Schema<IUser>(
         favoritePlayer: {
             type: String,
         },
+        favoritePlayers: [
+            {
+                type: String,
+                ref: "PlayerSearch",
+            },
+        ],
         shareWorkoutStats: {
             type: Boolean,
             required: true,

@@ -89,8 +89,6 @@ export default function EditProfileForm({ user }: { user: IUser }) {
     }, [password, clearErrors]);
 
     const onSubmit = async (data: EditProfileFormValues) => {
-        // console.log("FORM DATA", data);
-
         if (data.password) {
             const isValid = await checkUserPassword({ email: user.email, password: data.password });
 
@@ -134,7 +132,7 @@ export default function EditProfileForm({ user }: { user: IUser }) {
 
     return (
         <form className="flex flex-col gap-y-5 text-f-default" onSubmit={handleSubmit(onSubmit)}>
-            <h2 className="text-center text-xl font-semibold">Edit profile</h2>
+            <h2 className="text-center text-xl font-semibold">EDIT PROFILE</h2>
 
             <div className="grid grid-cols-2 gap-x-5 gap-y-6">
                 <Input

@@ -45,7 +45,8 @@ type IPathKey =
     | "questions"
     | "requirements"
     | "howToRecord"
-    | "player";
+    | "player"
+    | "users";
 
 export const PATHES: Record<IPathKey, IPathItem> = {
     home: {
@@ -71,7 +72,7 @@ export const PATHES: Record<IPathKey, IPathItem> = {
     },
     profile: {
         title: "Profile",
-        path: "/user",
+        path: "/profile",
         dynamic: false,
         menuLocation: ["profile"],
         category: "none",
@@ -79,7 +80,7 @@ export const PATHES: Record<IPathKey, IPathItem> = {
     },
     coaching: {
         title: "Coaching",
-        path: "/user/coaching",
+        path: "/profile/coaching",
         dynamic: false,
         menuLocation: ["profile"],
         category: "none",
@@ -87,7 +88,7 @@ export const PATHES: Record<IPathKey, IPathItem> = {
     },
     workouts: {
         title: "Workouts",
-        path: "/user/workouts",
+        path: "/profile/workouts",
         dynamic: false,
         menuLocation: ["profile"],
         category: "none",
@@ -95,7 +96,7 @@ export const PATHES: Record<IPathKey, IPathItem> = {
     },
     editProfile: {
         title: "Edit profile",
-        path: "/user/edit",
+        path: "/profile/edit",
         dynamic: false,
         menuLocation: ["profile"],
         category: "none",
@@ -103,7 +104,7 @@ export const PATHES: Record<IPathKey, IPathItem> = {
     },
     settingsProfile: {
         title: "Settings",
-        path: "/user/settings",
+        path: "/profile/settings",
         dynamic: false,
         menuLocation: ["profile"],
         category: "none",
@@ -111,7 +112,7 @@ export const PATHES: Record<IPathKey, IPathItem> = {
     },
     performStarsPro: {
         title: "PerformStars Pro",
-        path: "/user/pro",
+        path: "/profile/pro",
         dynamic: false,
         menuLocation: ["profile"],
         category: "none",
@@ -137,6 +138,13 @@ export const PATHES: Record<IPathKey, IPathItem> = {
         path: "/players/",
         dynamic: true,
         menuLocation: [],
+        category: "none",
+    },
+    users: {
+        title: "Users",
+        path: "/players/users/",
+        dynamic: true,
+        menuLocation: ["base"],
         category: "none",
     },
     matches: {

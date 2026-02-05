@@ -1,4 +1,5 @@
 import { ISvg } from "@/types/types";
+
 import logo_footer from "@/assets/svg/footer-logo.svg fill.svg";
 import youtube from "@/assets/svg/youtube_footer.svg fill.svg";
 import fb from "@/assets/svg/facebook.svg fill.svg";
@@ -24,6 +25,17 @@ import arrow_right from "@/assets/svg/arrow_right.svg";
 import check from "@/assets/svg/circle-check.svg";
 import win from "@/assets/svg/winner.svg";
 import close from "@/assets/svg/close.svg";
+import arrleft from "@/assets/svg/chevron-left.svg";
+import event from "@/assets/svg/Event_Image.svg";
+import history from "@/assets/svg/history.svg";
+import checkgreen from "@/assets/svg/check.svg";
+import err from "@/assets/svg/x.svg";
+import calendar from "@/assets/svg/Calendar.svg";
+import hummer from "@/assets/svg/hummer.svg";
+import plus from "@/assets/svg/plus.svg";
+import folderPlus from "@/assets/svg/folderPlus.svg";
+import link from "@/assets/svg/link.svg";
+import del from "@/assets/svg/delete.svg";
 
 export const LogoFooterSvg = logo_footer as ISvg;
 export const YoutubeSvg = youtube as ISvg;
@@ -45,9 +57,21 @@ export const LogoutSvg = logout as ISvg;
 export const ArrowTopRightGreen = arrowGreen as ISvg;
 export const StarForString = starString as ISvg;
 export const ArrowDown = arrdown as ISvg;
+export const ArrowLeft = arrleft as ISvg;
 export const MaleIco = male as ISvg;
 export const FemaleIco = female as ISvg;
 export const ArrowRightIco = arrow_right as ISvg;
 export const CircleCheckIco = check as ISvg;
 export const WinnerIco = win as ISvg;
 export const CloseIco = close as ISvg;
+export const EventIco = event as ISvg;
+
+export const HistoryIco = history as ISvg;
+export const CheckGreenIco = checkgreen as ISvg;
+export const CloseRedIco = err as ISvg;
+export const CalendarIco = calendar as ISvg;
+export const HummerIco = hummer as ISvg;
+export const PlusIco = plus as ISvg;
+export const FolderPlusIco = folderPlus as ISvg;
+export const LinkIco = link as ISvg;
+export const DeleteIco = del as ISvg;

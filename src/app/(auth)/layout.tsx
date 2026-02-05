@@ -4,6 +4,7 @@ import "@/styles/globals.scss";
 import AuthLayout from "@/layouts/AuthLayout/AuthLayout";
 import { auth } from "@/config/auth";
 import { redirect } from "next/navigation";
+import { PATHES } from "@/config/pathes";
 
 export default async function SignLayout({
     children,
@@ -11,6 +12,6 @@ export default async function SignLayout({
     children: React.ReactNode;
 }>) {
     const session = await auth();
-    if (session?.user) redirect("/user");
+    if (session?.user) redirect(PATHES.profile.path);
     return <AuthLayout>{children}</AuthLayout>;
 }

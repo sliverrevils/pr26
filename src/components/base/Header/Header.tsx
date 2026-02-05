@@ -1,6 +1,6 @@
 "use client";
 import HeaderMenu from "@/components/menus/HeaderMenu/HeaderMenu";
-import { UserAvatar } from "@/components/ui/UserAvatar/UserAvatar";
+import { Avatar } from "@/components/ui/Avatar/Avatar";
 
 import { PATHES } from "@/config/pathes";
 import { LogoSvg } from "@/icons/iconsSvg";
@@ -38,7 +38,7 @@ export default function Header({ user }: { user: IUser | null }) {
                             className=" w-10 h-10 rounded-full flex items-center overflow-hidden"
                         >
                             {/* <Image src={avatarImage} width={40} height={40} alt="avatar" /> */}
-                            <UserAvatar user={user} size="small" />
+                            <Avatar human={user} size="small" />
                         </Link>
                     ) : (
                         <Link href={PATHES.signIn.path} className="btn-white-40 bg-white border-0">

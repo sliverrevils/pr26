@@ -18,6 +18,7 @@ type ChooseProps = {
     requiredTitle?: boolean;
     placeholder?: string;
     chooseText?: string;
+    classNameWrap?: string;
 };
 
 //!ON useForm WITH CONTROLLER
@@ -29,6 +30,7 @@ export default function Choose({
     error,
     chooseText,
     options = [],
+    classNameWrap,
 }: ChooseProps) {
     return (
         <div className="flex flex-col gap-1 relative text-f-default">
@@ -42,6 +44,7 @@ export default function Choose({
                 className={clsx(
                     "bg-f-gray-4 flex items-center justify-between w-full rounded-xl border px-4 py-1.5 h-12.5",
                     error ? "border-f-red-main" : "border-f-gray-5",
+                    classNameWrap ? classNameWrap : "",
                 )}
             >
                 <div className="font-medium">{chooseText}</div>

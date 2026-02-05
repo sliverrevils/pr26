@@ -49,7 +49,10 @@
     --color-f-red-like: #f27d76;
     --color-f-red-transparent: #ffe1e7;
 
-    --color-f-: #fff730;
+    --color-f-text-light: #8e8e8e;
+    --color-f-text-purple: #9c9bc2;
+    --color-f-text-grey-brown: #877777;
+    --color-f-text-default: #616a72;
 
     /* 
     GRADIENT

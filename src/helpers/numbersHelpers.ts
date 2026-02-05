@@ -1,0 +1,4 @@
+export function roundNumber(num: number): number {
+    if (Number.isInteger(num)) return num;
+    return Math.floor(num * 100) / 100;
+}

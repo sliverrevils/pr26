@@ -1,5 +1,6 @@
 import View from "@/components/common/View/View";
-import Matches from "@/components/ui/Mathes/Matches";
+import Matches from "@/components/filters/Matches/Matches";
+
 import { IMatchFilters } from "@/hooks/useMatchFilters";
 import ProfileLayoyt from "@/layouts/ProfileLayout/ProfileLayout";
 

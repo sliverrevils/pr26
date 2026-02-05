@@ -1,16 +1,14 @@
-import View from "@/components/common/View/View";
 import ProfileMenu from "@/components/menus/ProfileMenu/ProfileMenu";
-import AuthToggle from "@/components/ui/AuthToggle/AuthToggle";
 import PlayerInfo from "@/components/ui/PlayerInfo/PlayerInfo";
-import UserInfo from "@/components/ui/UserInfo/UserInfo";
-import { IPlayer } from "@/mongo/models/playerModel";
+import { IPlayerSearch } from "@/mongo/models/playersSearchModel";
+import { IUser } from "@/mongo/models/userModel";
 import { getCurrentUser } from "@/services/userService";
 import { Activity, PropsWithChildren } from "react";
 
 export default async function PlayerLayoyt({
     children,
     player,
-}: PropsWithChildren & { player: IPlayer }) {
+}: PropsWithChildren & { player: Partial<IPlayerSearch & IUser> }) {
     const user = await getCurrentUser();
     return (
         <div className="container flex gap-5 items-start pt-8 pb-16">
@@ -18,7 +16,6 @@ export default async function PlayerLayoyt({
                 <PlayerInfo player={player} />
                 <ProfileMenu user={user} />
             </div>
-
             {children}
         </div>
     );
