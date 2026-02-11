@@ -2,13 +2,18 @@
 import { PATHES } from "@/config/pathes";
 import { ISvg } from "@/types/types";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
 
 export type IProfileMenuItem = {
     title: string;
     path: string;
     selected: boolean;
-    Icon: ISvg | null;
+    Icon?: ISvg | null;
+};
+
+export type IHeaderMenuItem = {
+    title: string;
+    path: string;
+    selected: boolean;
 };
 
 export default function useMenu() {
@@ -20,7 +25,7 @@ export default function useMenu() {
             title,
             path,
             selected: pagePath.includes(path),
-        }));
+        })) as IHeaderMenuItem[];
 
     const profileMenu: IProfileMenuItem[] = Object.values(PATHES)
         .filter((el) => el.menuLocation.includes("profile"))

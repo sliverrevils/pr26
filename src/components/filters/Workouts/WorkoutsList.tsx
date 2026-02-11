@@ -5,111 +5,97 @@ import Image from "next/image";
 import clsx from "clsx";
 import { StarForString } from "@/icons/iconsSvg";
 import { roundNumber } from "@/helpers/numbersHelpers";
+import { IDrill } from "@/mongo/models/drillsModel";
+import { DevBlock } from "@/helpers/testHelpers";
+import dayjs from "dayjs";
+import { RangeShots } from "@/components/ui/RangeShots/RangeShots";
+import Link from "next/link";
+import { PATHES } from "@/config/pathes";
 
-const WORKOUTS = [
-    {
-        date: "04.02.2026",
-        items: [
-            {
-                status: "",
-                time: "00:30:31",
-                date: "16:57:18",
-                shots: 81,
-                shotsArr: [40, 10],
-                point: 754,
-            },
-            {
-                status: "Error Status code: 403",
-                time: "00:30:31",
-                date: "16:57:18",
-                shots: 40,
-                shotsArr: [20, 10],
-                point: 343,
-            },
-        ],
-    },
-    {
-        date: "04.02.2025",
-        items: [
-            {
-                status: "Error Status code: 403",
-                time: "00:17:31",
-                date: "14:57:18",
-                shots: 69,
-                shotsArr: [40, 10],
-                point: 345,
-            },
-        ],
-    },
-];
+export default function WorkoutsList({ drills }: { drills: IDrill[] }) {
+    let datesArr: string[] = [];
 
-export default function WorkoutsList() {
     return (
-        <div className="flex flex-col gap-8">
-            {WORKOUTS.map((work, idx) => (
-                <WorkoutItem key={idx + "_workouts"} {...work} />
-            ))}
+        <div className="flex flex-col gap-4">
+            {drills.map((drill, idx) => {
+                const { date, _id } = drill;
+                const dateStr = dayjs(date).format("DD.MM.YYYY");
+                const isNewDate = !datesArr.includes(dateStr);
+                datesArr = [...new Set([...datesArr, dateStr])];
+                return (
+                    <>
+                        {isNewDate && (
+                            <div className="text-f-text-default text-lg text-center font-bold mt-8">
+                                {dateStr}
+                            </div>
+                        )}
+                        <WorkoutRecord
+                            key={_id + "_workouts"}
+                            {...drill}
+                            className="cursor-pointer"
+                        />
+                    </>
+                );
+            })}
         </div>
     );
 }
 
-const WorkoutItem = ({ date, items }: (typeof WORKOUTS)[0]) => (
-    <div className="flex flex-col gap-4">
-        <div className="text-center font-bold text-f-text-default">{date}</div>
-        {items.map((item, idxex) => (
-            <WorkoutRecord key={Math.random()} {...item} />
-        ))}
-    </div>
-);
-
 const WorkoutRecord = ({
+    _id,
+    className = "",
     date,
-    point,
     shots,
-    shotsArr,
+    durationStr,
+    process,
+    good,
+    bad,
     status,
-    time,
-}: (typeof WORKOUTS)[0]["items"][0]) => (
-    <Block
-        className={clsx("flex gap-4", status ? "bg-f-red-transparent" : "bg-f-green-transparent2")}
-    >
-        <Image src={"/png/rec_work.png"} width={60} height={60} alt="rec" className="self-center" />
-        <div className="flex flex-col gap-1 w-full">
-            <div className="flex justify-between">
-                <div>
-                    <div className="font-semibold text-f-text-default text-lg">{time}</div>
-                    <div className="font-semibold text-f-text-light text-[14px]">
-                        {date} | {shots} shots
-                    </div>
-                </div>
-                <div className="relative  flex items-center text-f-text-default font-bold text-[15px] ">
-                    <div>{point}</div>
-                    <StarForString className="**:fill-f-default absolute -translate-y-1.75 -translate-x-3" />
-                </div>
-            </div>
-            <RangeArr arr={shotsArr} all={shots} />
-        </div>
-    </Block>
-);
-
-//! Arr - shots logic [good,bad]-> [good,good+bad]
-const RangeArr = ({ arr, all }: { arr: number[]; all: number }) => {
-    const colorArr = ["bg-f-green-main", "bg-f-red-main", "bg-f-purple"];
-    const sum = roundNumber(arr.reduce<number>((acc, num) => acc + num, 0));
-    const proc = roundNumber(all / 100);
-    const getWidth = (index: number) =>
-        !index
-            ? `${roundNumber(arr[index] / proc)}%`
-            : `${roundNumber(arr.reduce<number>((acc, num, idx) => (idx <= index ? acc + num : num), 0) / proc)}%`;
+    stats,
+    err,
+}: IDrill & { className?: string }) => {
+    const isComplete = !err;
+    const Tag = isComplete ? Link : "div";
     return (
-        <div className="relative w-full h-2.75 bg-white rounded-full overflow-hidden">
-            {arr.map((num, idx) => (
-                <div
-                    key={Math.random()}
-                    className={`absolute left-0 top-0 bottom-0 rounded-full ${colorArr[idx]}`}
-                    style={{ width: getWidth(idx), zIndex: 10 - idx }}
-                ></div>
-            ))}
-        </div>
+        <Tag href={PATHES.workout.path + _id}>
+            <Block
+                className={clsx(
+                    "flex gap-4",
+                    className,
+                    !isComplete ? "bg-f-red-transparent" : "bg-f-green-transparent2",
+                )}
+            >
+                <Image
+                    src={"/png/rec_work.png"}
+                    width={60}
+                    height={60}
+                    alt="rec"
+                    className="self-center"
+                />
+                <div className="flex flex-col gap-1 w-full">
+                    <div className="flex justify-between">
+                        <div>
+                            <div className="font-semibold text-f-text-default text-lg">
+                                {durationStr}
+                            </div>
+                            {isComplete ? (
+                                <div className="font-semibold text-f-text-light text-[14px]">
+                                    {dayjs(date).format("h:mm:ss")} | {shots} shots
+                                </div>
+                            ) : (
+                                <div className="font-semibold text-f-text-light text-[14px]">
+                                    {status}
+                                </div>
+                            )}
+                        </div>
+                        <div className="relative  flex items-center text-f-text-default font-bold text-[15px] ">
+                            <div>{stats?.performance || 0}</div>
+                            <StarForString className="**:fill-f-default absolute -translate-y-1.75 -translate-x-3" />
+                        </div>
+                    </div>
+                    <RangeShots arr={[good, bad]} all={shots} />
+                </div>
+            </Block>
+        </Tag>
     );
 };

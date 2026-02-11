@@ -13,10 +13,10 @@ export default async function Home() {
             <MainSlider />
             <div className="flex flex-col gap-24.5 pb-11">
                 <Suspense fallback={<div>Loading ...</div>}>
-                    <LastMatches count={9} />
+                    <LastMatches count={10} />
                 </Suspense>
 
-                <TopPlayers players={players} forMain />
+                <TopPlayers players={players} forMain showFargo={true} />
 
                 <RegisterNow />
 

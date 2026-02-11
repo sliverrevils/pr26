@@ -11,6 +11,7 @@ import { Binary } from "mongodb";
 import { redirect } from "next/dist/server/api-utils";
 import { PATHES } from "@/config/pathes";
 import { IPlayerSearch, PlayerSearchModel } from "@/mongo/models/playersSearchModel";
+import { sendMail } from "@/libs/email";
 
 //! SING UP
 type IUserCreateProps = {
@@ -28,8 +29,17 @@ export const singUpUserDB = async (user: IUserCreateProps): Promise<IActionResul
         const hashedPassword = await hashPassword(user.password);
         newUser.password = hashedPassword as any as Binary;
 
-        await newUser.save();
-        return { type: "success", message: "You have been successfully registered." };
+        const userReg = await newUser.save();
+        await sendMail({
+            to: user.email,
+            subject: "Performstars : Confirm your email",
+            html: ` <p>Hello ${user.name},</p> <p>Please confirm your email by clicking the link below:</p> <a href="${process.env.NEXTAUTH_URL}/api/auth/confirm-email?token=${userReg.emailConfirmationToken}"> Confirm Email </a> `,
+        });
+
+        return {
+            type: "success",
+            message: "You have been successfully registered. Check your email to confirm!",
+        };
     } catch (error) {
         console.log("ERROR 👎", error);
         if (error instanceof Error) {

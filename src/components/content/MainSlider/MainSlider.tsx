@@ -87,13 +87,22 @@ export default function MainSlider() {
                         <div className="relative h-full w-full overflow-hidden">
                             {/* Градиентный фон и контент */}
                             <div className={`h-full w-full flex justify-center ${slide.gradient}`}>
-                                <div className="w-full container flex items-center justify-between gap-10 px-6">
+                                <div
+                                    className="w-full container flex flex-col-reverse  items-center justify-center gap-5   px-6
+                                                lg:flex-row lg:gap-10 lg:justify-between
+                                                "
+                                >
                                     <div className="flex flex-col  max-w-xl">
                                         <div className="text-lg leading-snug  font-medium text-white/80 mb-2.5">
                                             Welcome to new analytics service
                                         </div>
 
-                                        <div className="text-5xl leading-snug font-bold text-white mb-5 ">
+                                        <div
+                                            className="text-3xl leading-snug font-bold text-white mb-5 
+                                                        md:text-4xl
+                                                        lg:text-5xl
+                                                        "
+                                        >
                                             {slide.title}
                                         </div>
 
@@ -112,12 +121,19 @@ export default function MainSlider() {
                                         )}
                                     </div>
 
-                                    <div className="shrink-0">
+                                    <div
+                                        className="shrink-0 
+                                                    lg:block
+                                                    "
+                                    >
                                         <Image
                                             src={slide.image}
                                             alt="about us"
                                             width={527}
                                             height={463}
+                                            className="w-70 
+                                                      xl:w-full
+                                                        "
                                         />
                                     </div>
                                 </div>

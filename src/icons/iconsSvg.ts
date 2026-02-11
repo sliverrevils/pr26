@@ -36,6 +36,9 @@ import plus from "@/assets/svg/plus.svg";
 import folderPlus from "@/assets/svg/folderPlus.svg";
 import link from "@/assets/svg/link.svg";
 import del from "@/assets/svg/delete.svg";
+import menu from "@/assets/svg/menu.svg";
+import arr_left from "@/assets/svg/arr_left.svg";
+import arr_right from "@/assets/svg/arr_right.svg";
 
 export const LogoFooterSvg = logo_footer as ISvg;
 export const YoutubeSvg = youtube as ISvg;
@@ -75,3 +78,6 @@ export const PlusIco = plus as ISvg;
 export const FolderPlusIco = folderPlus as ISvg;
 export const LinkIco = link as ISvg;
 export const DeleteIco = del as ISvg;
+export const ArrLeftIco = arr_left as ISvg;
+export const ArrRightIco = arr_right as ISvg;
+export const MenuIco = menu as ISvg;

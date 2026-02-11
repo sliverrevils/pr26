@@ -26,7 +26,7 @@ const SUBSCRIBE = [
 export default function PerformStarsProPage() {
     return (
         <View main>
-            <h2 className="text-center text-xl font-semibold text-f-default">SUBSCRIBE</h2>
+            <h2 className="text-center text-xl font-bold text-f-default">SUBSCRIBE</h2>
             <div className="flex justify-center gap-4">{SUBSCRIBE.map(SubscribeItem)}</div>
             <div className="text-center text-[14px] text-f-text-light">
                 *To continue after completing Level 1, a Pro subscription is required.

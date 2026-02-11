@@ -9,7 +9,7 @@ export default async function MatchesPage(props: { searchParams: Promise<IMatchF
 
     return (
         <ProfileLayoyt>
-            <View className="flex flex-col  py-8 text-[20px] ">
+            <View className="w-full flex flex-col  py-8 text-[20px] ">
                 <h1 className="font-bold text-center text-f-default text-lg">MATHES</h1>
                 <Matches searchParams={searchParams} />
             </View>

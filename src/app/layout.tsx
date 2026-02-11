@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
-import "@/styles/tailwind.css";
-import "@/styles/globals.scss";
 import { connectDB } from "@/mongo/connect";
 import ErrorLayout from "@/layouts/ErrorLayout/ErrorLayout";
 import BaseLayout from "@/layouts/BaseLayout/BaseLayout";
 import { ToastContainer } from "react-toastify";
-import { auth } from "@/config/auth";
-import { headers } from "next/headers";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { SessionProvider } from "next-auth/react";
+
+import "@/styles/tailwind.css";
+import "@/styles/globals.scss";
+import "react-circular-progressbar/dist/styles.css";
 
 const nunitoFont = Nunito({
     variable: "--font-nunito",
@@ -16,7 +17,7 @@ const nunitoFont = Nunito({
 });
 
 export const metadata: Metadata = {
-    title: "performstars",
+    title: "Performstars",
     description: "performstars",
 };
 
@@ -35,7 +36,9 @@ export default async function RootLayout({
             >
                 <ToastContainer closeButton />
                 <NuqsAdapter>
-                    <BaseLayout>{children}</BaseLayout>
+                    <SessionProvider>
+                        <BaseLayout>{children}</BaseLayout>
+                    </SessionProvider>
                 </NuqsAdapter>
             </body>
         </html>

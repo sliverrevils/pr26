@@ -52,14 +52,13 @@ export async function findFilteredMatches({
     }
 
     if (playerSearch) {
-        query["opponents.name"] = {
-            $regex: playerSearch,
-            $options: "i",
+        query.opponents = {
+            $elemMatch: { name: { $regex: playerSearch, $options: "i" } },
         };
     }
 
     if (player) {
-        query.players = player;
+        query.opponents = { $elemMatch: { _id: player } };
     }
 
     const limit = 10;
@@ -75,6 +74,7 @@ export async function findFilteredMatches({
             .lean();
 
         const res = normalizeDbRes<IMatchesSearch[]>(docs);
+        // console.log("findFilteredMatches 🔁", searchParams, query);
         return res;
     } catch (error) {
         return [];

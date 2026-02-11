@@ -27,9 +27,7 @@ export default function StatRange({
                 ((oponents[0].matchStats[field] + oponents[1].matchStats[field]) / 100),
         );
     return (
-        <div
-            className={`w-full flex flex-col gap-4  items-center p-4 rounded-xl bg-f-purple-transparent`}
-        >
+        <div className={`w-full flex flex-col gap-4  items-center p-4 rounded-xl bg-f-gray-4`}>
             <div className="text-f-default font-bold text-lg">{title}</div>
 
             <div className="flex w-full items-center gap-3.75">

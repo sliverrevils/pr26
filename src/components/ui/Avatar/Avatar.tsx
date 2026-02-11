@@ -10,7 +10,7 @@ export const Avatar = ({
     size,
     className,
     showFargo = false,
-    showTop = true,
+    showCorona = true,
     showName = false,
     link = false,
     nameStyle = "",
@@ -33,7 +33,7 @@ export const Avatar = ({
     size: "big" | "small" | "oponent" | "favorite";
     className?: string;
     showFargo?: boolean;
-    showTop?: boolean;
+    showCorona?: boolean;
     showName?: boolean;
     link?: boolean;
     nameStyle?: string;
@@ -45,16 +45,6 @@ export const Avatar = ({
             href={PATHES.player.path + human.alias}
             className={`relative flex flex-col gap-1.5  w-fit  cursor-pointer ${className}`}
         >
-            {showTop && human.top && (
-                <div className="absolute text-f-purple font-bold  rounded-lg px-1 z-10">
-                    <WinnerIco />
-                </div>
-            )}
-            {showFargo && (
-                <div className="absolute text-f-purple font-bold bg-f-gray-1 rounded-lg px-1 -left-2 z-10">
-                    {human.fargo}
-                </div>
-            )}
             <div
                 className={` aspect-square relative   rounded-full border-white  bg-f-gray-3 overflow-hidden                            
                             ${
@@ -127,11 +117,21 @@ export const Avatar = ({
             </div>
             {showName && (
                 <div
-                    className={`text-center max-w-25 text-f-default text-[16px] font-bold text-wrap
+                    className={`text-center self-center max-w-25 text-f-default text-[16px] font-bold text-wrap
                                 ${nameStyle}
                                 `}
                 >
                     {human.name}
+                </div>
+            )}
+            {showCorona && human.top && !showFargo && (
+                <div className="absolute text-f-purple font-bold  rounded-lg px-1 ">
+                    <WinnerIco />
+                </div>
+            )}
+            {showFargo && (
+                <div className="absolute text-f-purple font-bold bg-f-gray-1 rounded-lg px-1 -left-2 ">
+                    {human.fargo}
                 </div>
             )}
         </Tag>

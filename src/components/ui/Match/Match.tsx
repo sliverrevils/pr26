@@ -12,6 +12,7 @@ export const Match = ({
     className = "",
     noPadding = false,
     resultStyle = false,
+    scoreStyle = true,
 }: {
     match: IMatchesSearch;
     forInfo?: boolean;
@@ -20,6 +21,7 @@ export const Match = ({
     className?: string;
     noPadding?: boolean;
     resultStyle?: boolean;
+    scoreStyle?: boolean;
 }) => {
     const [isFirstWin, isSecondWin] = [
         match.score?.[0] >= match.score?.[1],
@@ -73,11 +75,27 @@ export const Match = ({
                 <div
                     className={`${bigTextScore ? "text-[63px]" : "text-[40px]"} text-f-default font-bold flex items-center`}
                 >
-                    <span className={isFirstWin ? "text-f-green-main" : "text-f-red-main"}>
+                    <span
+                        className={
+                            scoreStyle
+                                ? isFirstWin
+                                    ? "text-f-green-main"
+                                    : "text-f-red-main"
+                                : "text-f-text-default"
+                        }
+                    >
                         {match.score?.[0]}
                     </span>
                     <span>:</span>
-                    <span className={isSecondWin ? "text-f-green-main" : "text-f-red-main"}>
+                    <span
+                        className={
+                            scoreStyle
+                                ? isSecondWin
+                                    ? "text-f-green-main"
+                                    : "text-f-red-main"
+                                : "text-f-text-default"
+                        }
+                    >
                         {match.score?.[1]}
                     </span>
                 </div>

@@ -11,7 +11,7 @@ export default async function PlayersPage() {
             <View className="flex flex-col  py-8 text-[20px]">
                 <h1 className="font-bold text-center text-f-default text-lg">PLAYERS</h1>
                 <UsersSearch className="mb-8" />
-                <TopPlayers players={players} forMain={false} />
+                <TopPlayers players={players} forMain={false} showFargo={false} showCorona={true} />
             </View>
         </ProfileLayoyt>
     );

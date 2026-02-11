@@ -14,7 +14,7 @@ export default function LeftSideBlock({ user }: { user: IUser | null }) {
     const isCoaching = pathname.includes(PATHES.coaching.path);
     const isAuth = !!user;
     return (
-        <div className="flex flex-col gap-5 w-full max-w-87">
+        <div className="flex flex-col gap-5 w-full lg:max-w-87">
             <Activity mode={!isAuth ? "visible" : "hidden"}>
                 <AuthToggle />
             </Activity>
@@ -22,7 +22,7 @@ export default function LeftSideBlock({ user }: { user: IUser | null }) {
                 <UserInfo user={user!} isCoaching={isCoaching} />
             </Activity>
             <Activity mode={user ? "visible" : "hidden"}>
-                <ProfileMenu user={user} />
+                <ProfileMenu user={user} className="hidden lg:flex" />
             </Activity>
         </div>
     );

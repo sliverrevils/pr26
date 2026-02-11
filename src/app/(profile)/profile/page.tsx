@@ -47,7 +47,7 @@ export default async function UserPage() {
     const { user } = session;
     return (
         <View className="flex flex-col gap-y-5" main>
-            <h2 className="text-center text-xl font-semibold text-f-default">FEED</h2>
+            <h2 className="text-center text-xl font-bold text-f-default">FEED</h2>
 
             <div className="flex flex-col gap-4">{mockAwards.map(AwardItem)}</div>
 

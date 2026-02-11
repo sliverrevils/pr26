@@ -22,7 +22,7 @@ export default function MatchInfo({ match }: { match: IMatchesSearch }) {
                 </div>
                 <div className="flex flex-col items-center">
                     <div className="font-bold text-f-default text-[20px] ">MATCH</div>
-                    <div className="font-normal text-f-purple text-[14px]">
+                    <div className="font-normal text-f-text-purple text-[14px]">
                         {dayjs(match.date).format("DD.MM.YYYY")}
                     </div>
                 </div>

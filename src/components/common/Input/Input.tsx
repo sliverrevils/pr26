@@ -4,6 +4,7 @@ import clsx from "clsx";
 type Props = InputHTMLAttributes<HTMLInputElement> & {
     title?: string;
     error?: string;
+    success?: string;
     hideBtn?: boolean;
     requiredTitle?: boolean;
     date?: boolean;
@@ -17,6 +18,7 @@ export default function Input(props: Props) {
         requiredTitle = false,
         date = false,
         className,
+        success,
         ...inputProps
     } = props;
     const [isHide, setIsHide] = useState(true);
@@ -56,6 +58,11 @@ export default function Input(props: Props) {
             {error && (
                 <div className=" absolute left-0 bottom-0 translate-y-full text-f-red-main text-xs">
                     {error}
+                </div>
+            )}
+            {success && (
+                <div className=" absolute left-0 bottom-0 translate-y-full text-f-green-main text-xs">
+                    {success}
                 </div>
             )}
         </div>

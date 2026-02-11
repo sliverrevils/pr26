@@ -131,10 +131,17 @@ export default function EditProfileForm({ user }: { user: IUser }) {
     };
 
     return (
-        <form className="flex flex-col gap-y-5 text-f-default" onSubmit={handleSubmit(onSubmit)}>
-            <h2 className="text-center text-xl font-semibold">EDIT PROFILE</h2>
+        <form
+            className="relative flex flex-col gap-y-5 text-f-default"
+            onSubmit={handleSubmit(onSubmit)}
+        >
+            <h2 className="text-center text-xl font-bold">EDIT PROFILE</h2>
 
-            <div className="grid grid-cols-2 gap-x-5 gap-y-6">
+            <div
+                className="grid grid-cols-1 gap-x-5 gap-y-6
+                            xl:grid-cols-2
+                            "
+            >
                 <Input
                     title="Full name"
                     requiredTitle
@@ -214,8 +221,21 @@ export default function EditProfileForm({ user }: { user: IUser }) {
                     min={0}
                 />
             </div>
+            <TextArea
+                title="Describe yourself, in short"
+                placeholder="Tell others about you"
+                maxHeight={300}
+                error={errors.description?.message}
+                {...register("description", {
+                    setValueAs: (v) => v?.trim(),
+                })}
+            />
 
-            <div className="grid grid-cols-2 gap-x-5 gap-y-6">
+            <div
+                className="grid grid-cols-1 gap-x-5 gap-y-6 
+                            xl:grid-cols-2
+                            "
+            >
                 <Input
                     title="Your old password"
                     placeholder="Enter your password"
@@ -240,29 +260,31 @@ export default function EditProfileForm({ user }: { user: IUser }) {
                 />
             </div>
 
-            <TextArea
-                title="Describe yourself, in short"
-                placeholder="Tell others about you"
-                maxHeight={300}
-                error={errors.description?.message}
-                {...register("description", {
-                    setValueAs: (v) => v?.trim(),
-                })}
-            />
-
-            <div className="flex justify-end gap-5">
+            <div
+                className="flex justify-end gap-5 fixed bottom-5 right-5
+                            xl:static
+                            "
+            >
                 {isDirty && (
                     <button
                         type="button"
                         disabled={!isDirty}
                         onClick={() => reset(defaultValues)}
-                        className="btn-blue-40 bg-f-red-like"
+                        className="btn-blue-40 bg-f-red-like disabled:hidden 
+                                    
+                                    "
                     >
                         cancel
                     </button>
                 )}
 
-                <button type="submit" disabled={!isDirty} className=" btn-blue-40">
+                <button
+                    type="submit"
+                    disabled={!isDirty}
+                    className=" btn-blue-40 disabled:hidden 
+                                xl:disabled:block                                        
+                                "
+                >
                     update
                 </button>
             </div>

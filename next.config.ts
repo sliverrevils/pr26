@@ -4,6 +4,8 @@ import path from "path";
 const nextConfig: NextConfig = {
     /* config options here */
 
+    images: { remotePatterns: [{ protocol: "https", hostname: "img.performstars.com" }] },
+
     sassOptions: {
         includePaths: [path.join(process.cwd(), "src", "styles")],
         additionalData: `        

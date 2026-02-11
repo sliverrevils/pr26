@@ -41,9 +41,13 @@ export default function SettingsProfileForm({ user }: { user: IUser }) {
     return (
         <>
             <form className="flex flex-col gap-y-5 text-f-default">
-                <h2 className="text-center text-xl font-semibold">SETTINGS</h2>
+                <h2 className="text-center text-xl font-bold">SETTINGS</h2>
 
-                <div className="grid grid-cols-2 gap-x-5 gap-y-6">
+                <div
+                    className="grid grid-cols-1 gap-x-5 gap-y-6
+                                xl:grid-cols-2
+                                "
+                >
                     <Choose
                         value={fields.cueWeight}
                         onChange={changeFieldValue.bind(null, "cueWeight")}

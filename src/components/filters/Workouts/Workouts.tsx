@@ -4,12 +4,23 @@ import Block from "@/components/common/Block/Block";
 import Image from "next/image";
 import WorkoutsFilter from "./WorkoutsFilter";
 import WorkoutsList from "./WorkoutsList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "@/components/common/Modal/Modal";
 import AddWorkout from "./AddWorkout/AddWorkout";
+import { IDrill } from "@/mongo/models/drillsModel";
+import { getDrillsByUserId } from "@/services/drillsService";
+import { useSession } from "next-auth/react";
 
 export default function Workouts() {
     const [isAddWorkout, setIsAddWorkout] = useState(false);
+    const [drills, setDrils] = useState<IDrill[]>([]);
+    const { data } = useSession();
+
+    useEffect(() => {
+        if (data?.user) {
+            getDrillsByUserId({ userId: data.user.id }).then(setDrils);
+        }
+    }, [data?.user]);
     return (
         <div className="flex flex-col gap-8">
             <Block className="bg-f-purple-transparent flex items-center gap-3.75">
@@ -30,7 +41,7 @@ export default function Workouts() {
             </Modal>
 
             <WorkoutsFilter />
-            <WorkoutsList />
+            <WorkoutsList drills={drills} />
         </div>
     );
 }

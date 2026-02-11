@@ -41,7 +41,11 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
                     {/* Фон */}
                     <motion.div
                         className="absolute inset-0 bg-black/50"
-                        onClick={onClose}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            onClose();
+                        }}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}

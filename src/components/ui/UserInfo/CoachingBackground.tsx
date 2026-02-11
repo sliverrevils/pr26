@@ -46,7 +46,7 @@ export default function CoachingBackground({
                     {favoritePlayers.map((player) => (
                         <div key={player._id + "_favaritePlayer"} className="h-full w-10.5">
                             <div className="relative h-full outline-2 outline-white aspect-square rounded-full flex items-center justify-center">
-                                <Avatar human={player} size="favorite" showTop={false} />
+                                <Avatar human={player} size="favorite" showCorona={false} />
                             </div>
                         </div>
                     ))}
@@ -74,7 +74,7 @@ export default function CoachingBackground({
                             options={topPlayers.map((player) => ({
                                 label: player.name,
                                 value: player._id,
-                                icon: <Avatar human={player} size="small" showTop={false} />,
+                                icon: <Avatar human={player} size="small" showCorona={false} />,
                             }))}
                             placeholder="select from top players"
                         />

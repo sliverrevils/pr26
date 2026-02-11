@@ -75,7 +75,7 @@ export default function MathesList({
             </DevBlock>
 
             {matches.map((match) => (
-                <Match key={match._id} match={match} linkedOponents={false} />
+                <Match key={match._id} match={match} linkedOponents={false} scoreStyle={false} />
             ))}
             {!!!matches.length && !isLoading && (
                 <div className="flex flex-col gap-5 items-center text-f-default animate-fade-in">

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ContentLine from "../ContentLine/ContentLine";
+import ContentLine from "../../common/ContentLine/ContentLine";
 
 const ServiceCards = [
     {
@@ -49,7 +49,14 @@ export default function Possibilities() {
                 analysis of billiard videos.  We collect only open and publicly available video data
                 for analyzing."
             />
-            <div className="grid grid-cols-3 gap-4 ">{ServiceCards.map(Service)}</div>
+            <div
+                className="grid grid-cols-1 gap-4 
+                            md:grid-cols-2
+                            lg:grid-cols-3
+                            "
+            >
+                {ServiceCards.map(Service)}
+            </div>
         </div>
     );
 }

@@ -27,7 +27,7 @@ export type IUser = {
     newsSubscriptionToken?: string;
     emailConfirmationToken?: string;
 
-    // loginTokens?: string[];
+    loginTokens?: string[];
 
     socialLink?: string;
 
@@ -128,14 +128,11 @@ const UserSchema = new Schema<IUser>(
             index: true,
             default: () => crypto.randomUUID(), //TODO Сделать подтверждение по email
         },
-        // loginTokens: {
-        //     type: [String],
-        //     default: [],
-        // },
         socialLink: {
             type: String,
             trim: true,
         },
+
         date: {
             type: Date,
         },
@@ -196,6 +193,11 @@ const UserSchema = new Schema<IUser>(
             type: Boolean,
             required: true,
             default: false,
+        },
+        loginTokens: {
+            type: [String],
+            index: true,
+            default: () => [crypto.randomUUID()],
         },
     },
     {

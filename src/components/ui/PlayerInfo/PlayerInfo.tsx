@@ -19,7 +19,7 @@ export default function PlayerInfo({ player }: { player: Partial<IPlayerSearch &
                     className="opacity-20 w-full h-full object-cover absolute"
                 />
                 <div className="flex items-start gap-7  translate-y-7 w-87 h-full px-5">
-                    <Avatar human={player} size="big" showTop={false} />
+                    <Avatar human={player} size="big" showCorona={false} />
                     <div className=" flex-1 h-full flex justify-between items-center -translate-y-4 text-white">
                         <div className="relative">
                             <div className="font-semibold">

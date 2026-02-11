@@ -12,13 +12,19 @@ import clsx from "clsx";
 export default function UserInfo({
     user,
     isCoaching = false,
+    className = "",
 }: {
     user: IUser;
     isCoaching?: boolean;
+    className?: string;
 }) {
     return (
         <div
-            className={clsx("flex flex-col rounded-2xl bg-white ", isCoaching ? "gap-0" : " gap-9")}
+            className={clsx(
+                "flex flex-col rounded-2xl bg-white ",
+                isCoaching ? "gap-0" : " gap-9",
+                className,
+            )}
         >
             <div className="w-full h-40 bg-(image:--gradient-PurpleTopBottom) relative rounded-t-2xl ">
                 <Image
@@ -34,12 +40,12 @@ export default function UserInfo({
                         favoritePlayers={user?.favoritePlayers || []}
                     />
                 ) : (
-                    <div className="flex items-start gap-4  translate-y-7 w-87 h-full px-4">
+                    <div className="flex items-start gap-4  translate-y-7 w-full lg:w-87 h-full px-4">
                         <Avatar human={user} size="big" />
 
-                        <div className=" flex-1 h-full flex justify-between gap-2 items-center -translate-y-4 text-white">
-                            <div className="relative">
-                                <div className="font-semibold">
+                        <div className=" flex-1 h-full flex justify-around  lg:justify-between gap-2 items-center -translate-y-4 text-white ">
+                            <div className="relative  ">
+                                <div className="font-semibold flex justify-center">
                                     <span>Performance</span>
                                     <StarForString className="absolute -top-2.5 -left-3" />
                                 </div>

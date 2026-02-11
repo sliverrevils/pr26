@@ -34,6 +34,7 @@ type IPathKey =
     | "profile"
     | "coaching"
     | "workouts"
+    | "workout"
     | "editProfile"
     | "settingsProfile"
     | "performStarsPro"
@@ -94,6 +95,14 @@ export const PATHES: Record<IPathKey, IPathItem> = {
         category: "none",
         icon: WorkoutsSvg,
     },
+    workout: {
+        title: "Workout",
+        path: "/workout/",
+        dynamic: true,
+        menuLocation: ["base"],
+        category: "none",
+        icon: WorkoutsSvg,
+    },
     editProfile: {
         title: "Edit profile",
         path: "/profile/edit",
@@ -120,7 +129,7 @@ export const PATHES: Record<IPathKey, IPathItem> = {
     },
     recovery: {
         title: "Forgot your password?",
-        path: "/recovery",
+        path: "/reset-password",
         dynamic: false,
         menuLocation: ["base"],
         category: "none",

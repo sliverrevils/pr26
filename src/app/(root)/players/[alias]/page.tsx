@@ -13,7 +13,7 @@ export default async function PlayerPage({ params }: Props) {
     const mathes = await findFilteredMatches({ page: 1, searchParams: {} });
     if (!player) notFound();
     return (
-        <PlayerLayoyt player={player}>
+        <PlayerLayoyt className="flex flex-col lg:flex-row" player={player}>
             <View className="flex flex-col  py-8 text-[20px] ">
                 <h1 className="font-bold text-center text-f-default text-lg">LAST MATHES</h1>
 

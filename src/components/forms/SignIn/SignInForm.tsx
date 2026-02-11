@@ -21,12 +21,24 @@ export default function SignInForm() {
     const search = useSearchParams();
 
     const errorMemo: string = useMemo(() => {
+        const verification = search.get("verification");
+        if (verification == "error") {
+            return "Verification error";
+        }
         const error = search.get("code");
         if (error == "credentials") {
             return "Login or password error";
         }
         if (error == "email_not_confirmed") {
             return "You have not confirmed the email address you provided.";
+        }
+        return "";
+    }, [search]);
+
+    const successMemo = useMemo(() => {
+        const verification = search.get("verification");
+        if (verification === "success") {
+            return "Successful email verification";
         }
         return "";
     }, [search]);
@@ -59,6 +71,7 @@ export default function SignInForm() {
                 requiredTitle
                 placeholder="Enter your email address"
                 error={errors.email?.message || errorMemo}
+                success={successMemo}
                 {...register("email")}
             />
 

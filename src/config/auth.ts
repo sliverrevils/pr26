@@ -30,8 +30,7 @@ export const {
 
                 if (!user) return null;
 
-                //TODO Проверка подтверждения почты
-                //if (!user.emailConfirmed) throw new NotConfirmedEmailError();
+                if (!user.emailConfirmed) throw new NotConfirmedEmailError();
 
                 const isValid = await verifyPassword(credentials.password as string, user.password);
 

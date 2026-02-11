@@ -42,13 +42,14 @@ export default function MathesFilter({
             <Select
                 value={player}
                 onChange={(value) => {
+                    console.log(value);
                     setFilters({ player: value });
                 }}
                 onDropSelect={() => setFilters({ player: "" })}
                 options={topPlayers.map((player) => ({
                     label: player.name,
-                    value: player._id,
-                    icon: <Avatar human={player} size="small" showTop={false} />,
+                    value: player.playerId,
+                    icon: <Avatar human={player} size="small" showCorona={false} />,
                 }))}
                 title="Player"
                 placeholder="select from top players"

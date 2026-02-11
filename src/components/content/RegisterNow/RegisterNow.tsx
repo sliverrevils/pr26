@@ -18,12 +18,17 @@ export default function RegisterNow() {
             "
         >
             {/* <Image src={"/svg/regNowBg.svg"} width={1920} height={540} alt="bg" /> */}
-            <div className="z-10 flex items-center gap-6">
+            <div
+                className="z-10 flex flex-col items-center gap-2
+                            md:flex-row md:gap-6
+                            "
+            >
                 <Image
                     src={"/svg/registration-illustration.svg"}
                     width={393}
                     height={376}
                     alt="registration-illustration.svg"
+                    className="hidden md:block"
                 />
                 <div className="max-w-113 text-white flex flex-col gap-5 items-start">
                     <div className=" font-extrabold text-4xl leading-12.25">

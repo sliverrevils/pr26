@@ -1,0 +1,118 @@
+{
+  "_id": "l484m6jg1mxb",
+  "path": "/home/stuurgurs/media/temp/l484m6jg1mxb.mp4",
+  "fps": 30.052220101425757,
+  "orientation": 0,
+  "duration": 769.627,
+  "durationMs": 769627,
+  "title": "00:12:49",
+  "durationStr": "00:12:49",
+  "frames": 23129,
+  "width": 1920,
+  "height": 1080,
+  "live": false,
+  "date": {
+    "$date": "2025-01-30T10:21:04.000Z"
+  },
+  "clientFileName": "REC4811064200100743185.mp4",
+  "table": true,
+  "manualTable": false,
+  "year": 2025,
+  "day": 30,
+  "videoType": "drill",
+  "tableSize": "9ft",
+  "gameType": "pool",
+  "camerasMap": [
+    {
+    "image": "data:image/png;base64,/9j/4AAb4S0fXdUЭ",
+      "frame": 8716,
+      "points": [
+        {
+          "y": 719,
+          "x": 1492
+        }
+      ],
+      "rails": [
+        1304,
+      ],
+      "tableArea": 629568,
+      "tableConf": 1,
+      "filling": 0.3036111111111111
+    }
+  ],
+  "user": "10acvlz9l2brl",
+  "ipv4": "176.109.8.212",
+  "geoFromProfile": {
+    "country_name": null,
+    "country_code": "RU",
+    "city": "Севастополь"
+  },
+  "geoByIp": {
+    "country_name": "Russia",
+    "country_code": "RU",
+    "city": null,
+    "region": null,
+    "status": 200
+  },
+  "slave": 49,
+  "shots": 40,
+  "good": 0,
+  "bad": 0,
+  "description": "",
+  "_createdAt": {
+    "$date": "2025-01-30T14:49:57.546Z"
+  },
+  "_updatedAt": {
+    "$date": "2026-02-07T13:37:25.609Z"
+  },
+  "download": false,
+  "status": "Shots detection completed",
+  "hash": [],
+  "process": 19686,
+  "points": [
+    {
+      "y": 719,
+      "x": 1492
+    },
+    {
+      "y": 735,
+      "x": 188
+    },
+    {
+      "y": 111,
+      "x": 596
+    },
+    {
+      "y": 87,
+      "x": 1304
+    }
+  ],
+  "isProcessed": true,
+  "balls": "0",
+  "cache": true,
+  "_deletedAt": {
+    "$date": "2025-10-27T08:17:33.629Z"
+  },
+  "userIdBeforeDeleted": "j94m8g4uqhy",
+  "err": true,
+  
+  "stats": {
+    "shots": 40,
+    "miss": 15,
+    "made": 17,
+    "complex": 0,
+    "strong": 0,
+    "long": 0,
+    "accuracy": 53,
+    "positioning": null,
+    "performance": 180,
+    "breaks": 3,
+    "duration": 16,
+    "pockets": [
+      {
+        "count": 3,
+        "acc": 50
+      }
+    ]
+  }
+}

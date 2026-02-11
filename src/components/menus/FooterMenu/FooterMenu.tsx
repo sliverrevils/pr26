@@ -13,11 +13,20 @@ export default function FooterMenu({ className }: { className: string }) {
     return (
         <div className={` ${className}`}>
             {footerMenu.map(({ categoryTitle, items }) => (
-                <div key={categoryTitle + "_footerMenu"} className="flex flex-col gap-6">
-                    <div className="text-white font-bold text-[16px] tracking-wider">
+                <div
+                    key={categoryTitle + "_footerMenu"}
+                    className="flex flex-col gap-3
+                                                                    md:gap-6
+                                                                    "
+                >
+                    <div className="text-white font-bold text-[16px] tracking-wider text-nowrap">
                         {categoryTitle}
                     </div>
-                    <div className="flex flex-col gap-5">
+                    <div
+                        className="flex flex-col gap-2
+                                    md:gap-5
+                                    "
+                    >
                         {items.map(({ path, selected, title }) => (
                             <Link
                                 key={title + "_footerMenu"}
