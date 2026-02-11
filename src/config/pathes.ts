@@ -24,7 +24,7 @@ type IPathKey =
     | "home"
     | "players"
     | "matches"
-    | "match"
+    | "match" //! in matcheSearch by videoId
     | "about"
     | "possibilities"
     | "cooperation"
@@ -34,7 +34,7 @@ type IPathKey =
     | "profile"
     | "coaching"
     | "workouts"
-    | "workout"
+    | "workout" //! in Drill by _id
     | "editProfile"
     | "settingsProfile"
     | "performStarsPro"

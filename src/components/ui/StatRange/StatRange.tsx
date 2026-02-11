@@ -2,11 +2,12 @@
 
 import { roundNumber } from "@/helpers/numbersHelpers";
 import { IOponent } from "@/mongo/models/matchSearchModel";
+import { IPlayerEmb } from "@/mongo/models/videosModel";
 
 type Props = {
-    oponents: IOponent[];
+    oponents: IPlayerEmb[];
     title: string;
-    field: keyof IOponent["matchStats"];
+    field: keyof Omit<IPlayerEmb["stats"], "pockets">;
     symbol?: string;
     isFirstWin: boolean;
     isSecondWin: boolean;
@@ -19,20 +20,21 @@ export default function StatRange({
     isSecondWin,
     field,
 }: Props) {
+    if (!oponents?.[0]?.stats?.[field] || !oponents?.[1]?.stats?.[field]) return false;
     const firstColor = isFirstWin ? "bg-f-green-main" : "bg-f-red-main";
     const secondColor = isSecondWin ? "bg-f-green-main" : "bg-f-red-main";
     const calcPocent = (num: number) =>
         Math.round(
-            oponents[num].matchStats[field] /
-                ((oponents[0].matchStats[field] + oponents[1].matchStats[field]) / 100),
+            oponents[num].stats[field] /
+                ((oponents[0].stats[field] + oponents[1].stats[field]) / 100),
         );
     return (
         <div className={`w-full flex flex-col gap-4  items-center p-4 rounded-xl bg-f-gray-4`}>
             <div className="text-f-default font-bold text-lg">{title}</div>
 
             <div className="flex w-full items-center gap-3.75">
-                <div className="text-f-default font-bold text-lg">
-                    {roundNumber(oponents[0].matchStats[field])}
+                <div className="text-f-default font-bold text-lg text-nowrap">
+                    {roundNumber(oponents[0].stats[field])}
                     {symbol}
                 </div>
 
@@ -47,8 +49,8 @@ export default function StatRange({
                     />
                 </div>
 
-                <div className="text-f-default font-bold text-lg">
-                    {roundNumber(oponents[1].matchStats[field])}
+                <div className="text-f-default font-bold text-lg text-nowrap">
+                    {roundNumber(oponents[1].stats[field])}
                     {symbol}
                 </div>
             </div>

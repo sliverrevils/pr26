@@ -6,6 +6,9 @@ import { ArrowLeft, EventIco } from "@/icons/iconsSvg";
 import { Flag } from "@/components/common/Flag/Flag";
 import { useRouter } from "next/navigation";
 import StatRange from "../StatRange/StatRange";
+import { useEffect, useState } from "react";
+import { IVideo } from "@/mongo/models/videosModel";
+import { getVideoById } from "@/services/videoService";
 
 export default function MatchInfo({ match }: { match: IMatchesSearch }) {
     const { back } = useRouter();
@@ -48,7 +51,9 @@ export default function MatchInfo({ match }: { match: IMatchesSearch }) {
 
             <Match match={match} forInfo bigTextScore={false} noPadding resultStyle />
 
-            <StatRange
+            <StatsRangesBlock videoId={match.videoId} />
+
+            {/* <StatRange
                 title="Shots"
                 oponents={match.opponents}
                 field="shots"
@@ -82,7 +87,62 @@ export default function MatchInfo({ match }: { match: IMatchesSearch }) {
                 field="avgShotDurationInSeconds"
                 isFirstWin={isFirstWin}
                 isSecondWin={isSecondWin}
-            />
+            /> */}
         </div>
     );
 }
+
+const StatsRangesBlock = ({ videoId }: { videoId: string }) => {
+    const [video, setVideo] = useState<IVideo | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getVideoById({ _id: videoId }).then((videoRes) => {
+            setVideo(() => videoRes);
+            setLoading(() => false);
+        });
+    }, []);
+
+    if (loading) return <div> Loading ...</div>;
+    if (video === null) return false;
+
+    const [isFirstWin, isSecondWin] = [
+        video.score?.[0] >= video.score?.[1],
+        video.score?.[1] >= video.score?.[0],
+    ];
+
+    return (
+        <div className="w-full flex flex-col gap-4">
+            <StatRange
+                title="Perfomance"
+                oponents={video.playersEmb}
+                field="performance"
+                isFirstWin={isFirstWin}
+                isSecondWin={isSecondWin}
+            />
+            <StatRange
+                title="Accuracy"
+                oponents={video.playersEmb}
+                field="accuracy"
+                symbol="%"
+                isFirstWin={isFirstWin}
+                isSecondWin={isSecondWin}
+            />
+            <StatRange
+                title="Temp"
+                oponents={video.playersEmb}
+                field="duration"
+                symbol=" s"
+                isFirstWin={isFirstWin}
+                isSecondWin={isSecondWin}
+            />
+            <StatRange
+                title="Shots"
+                oponents={video.playersEmb}
+                field="shots"
+                isFirstWin={isFirstWin}
+                isSecondWin={isSecondWin}
+            />
+        </div>
+    );
+};

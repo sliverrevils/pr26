@@ -23,7 +23,7 @@ export default function WorkoutsList({ drills }: { drills: IDrill[] }) {
                 const isNewDate = !datesArr.includes(dateStr);
                 datesArr = [...new Set([...datesArr, dateStr])];
                 return (
-                    <>
+                    <div key={_id + "worListItem"}>
                         {isNewDate && (
                             <div className="text-f-text-default text-lg text-center font-bold mt-8">
                                 {dateStr}
@@ -34,7 +34,7 @@ export default function WorkoutsList({ drills }: { drills: IDrill[] }) {
                             {...drill}
                             className="cursor-pointer"
                         />
-                    </>
+                    </div>
                 );
             })}
         </div>

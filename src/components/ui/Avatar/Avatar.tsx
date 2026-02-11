@@ -38,6 +38,7 @@ export const Avatar = ({
     link?: boolean;
     nameStyle?: string;
 }) => {
+    if (!human) return;
     const [avaLoadError, setAvaLoadError] = useState(false);
     const Tag = link ? Link : "div";
     return (

@@ -1,0 +1,80 @@
+.base {
+    // Общий стиль контейнера
+    @apply text-base leading-relaxed text-neutral-500;
+
+    h1 {
+        @apply text-3xl font-bold mt-6 mb-4;
+    }
+
+    h2 {
+        @apply text-2xl font-semibold mt-5 mb-3;
+    }
+
+    h3 {
+        @apply text-xl font-semibold mt-4 mb-2;
+    }
+
+    h4 {
+        @apply text-lg font-medium mt-3 mb-2;
+    }
+
+    p {
+        @apply mb-4 text-neutral-400;
+    }
+
+    a {
+        @apply text-blue-400 underline hover:text-blue-300;
+    }
+
+    ul {
+        @apply list-disc pl-6 mb-4;
+
+        li {
+            @apply mb-1;
+        }
+    }
+
+    ol {
+        @apply list-decimal pl-6 mb-4;
+
+        li {
+            @apply mb-1;
+        }
+    }
+
+    blockquote {
+        @apply border-l-4 border-neutral-500 pl-4 italic text-neutral-300 my-4;
+    }
+
+    code {
+        @apply bg-neutral-800 px-1 py-0.5 rounded text-sm text-orange-300;
+    }
+
+    pre {
+        @apply bg-neutral-900 p-4 rounded-lg overflow-x-auto text-sm mb-4;
+
+        code {
+            @apply bg-transparent p-0 text-orange-300;
+        }
+    }
+
+    table {
+        @apply w-full border-collapse my-4 text-sm;
+
+        th {
+            @apply text-left font-semibold border-b border-neutral-700 pb-2;
+        }
+
+        td {
+            @apply border-b border-neutral-800 py-2;
+        }
+    }
+
+    img {
+        @apply rounded-lg my-4;
+    }
+
+    hr {
+        @apply border-neutral-700 my-6;
+    }
+}

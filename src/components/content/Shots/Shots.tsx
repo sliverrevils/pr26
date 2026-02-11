@@ -110,10 +110,13 @@ export default function Shots({ video, view }: { video: string; view: "workout" 
 
     return (
         <div className="w-full flex flex-col gap-5">
-            <View main>
-                <h2 className="text-center text-xl font-bold text-f-default">
-                    {view === "workout" ? "WORKOUTS" : `RACK ${selectedRackIndex}`}
-                </h2>
+            <View gap={false} className="gap-2">
+                <div className="w-full flex flex-col items-center">
+                    <h2 className="text-center text-xl font-bold text-f-default">
+                        {view === "workout" ? "WORKOUTS" : `RACK ${selectedRackIndex}`}
+                    </h2>
+                    <div className="text-[14px] text-f-text-purple">{shots.length} shots</div>
+                </div>
                 {!!shots.length && (
                     <div className="flex flex-col items-center gap-2 w-full">
                         <div className="text-[14px] text-f-text-default">

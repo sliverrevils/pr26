@@ -1,0 +1,223 @@
+{
+  "_id": "VgRdvLhYD6Y",
+  "url": "https://www.youtube.com/watch?v=VgRdvLhYD6Y",
+  "download": true,
+  "user": "bDLvDNT",
+  "private": false,
+  "status": "Shots detection completed",
+  "statusCode": 0,
+  "shots": 71,
+  "good": 0,
+  "bad": 0,
+  "_createdAt": {
+    "$date": "2026-02-06T10:31:39.790Z"
+  },
+  "mindBegin": {
+    "$date": "2026-02-06T10:31:39.790Z"
+  },
+  "videoType": "match",
+  "title": "Joshua Filler vs Roland Garcia - 9 Ball - 2026 Derby City Classic rd 9",
+  "description": "Commentary by Scott Frost\n\nWatch the full tournament here: https://xpool.live\nhttps://digitalpool.com/tournaments/2026-derby-city-classic-9-ball/overview\n\nCoverage of the 2026 Derby City Classic from Caesar's Southern Indiana\n\nMerch!\nhttps://shop.railbirdstv.com\n\nSupport us on Patreon!\nhttps://patreon.com/RailbirdsTV\n\nFollow us on Facebook\nhttps://facebook.com/RailbirdsProductions",
+  "gameType": "pool",
+  "tableSize": "9",
+  "cameras": "one",
+  "camerasMap": [],
+  "email": false,
+  "date": "2026-02-04",
+  "year": 2026,
+  "day": 35,
+  "detailes": "lite",
+  "c": 0,
+  "players": [
+    "",
+    ""
+  ],
+  "score": [
+    "3",
+    "9"
+  ],
+  "game": 9,
+  "viewCount": 21314,
+  "duration": 2494.866,
+  "duration_hms": "00:41:34",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "itag": 248,
+  "formats": [
+    {
+      "mimeType": "video/mp4; codecs=\"avc1.42001E, mp4a.40.2\"",
+      "qualityLabel": "360p",
+      "bitrate": 370329,
+      "audioBitrate": 96,
+      "itag": 18,
+      "url": "https://rr1---sn-5hne6nsy.googlevideo.com/videoplayback?expire=1770395501&ei=DMOFaarAO7XNi9oP6_SFsQk&ip=144.124.234.36&id=o-APPwbshPX5_T8yF-hqwWNIPCdOYRylW-kCnDIFg0CdC6&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&cps=354&met=1770373900%2C&mh=fx&mm=31%2C26&mn=sn-5hne6nsy%2Csn-4g5lznlk&ms=au%2Conr&mv=m&mvi=1&pl=24&rms=au%2Cau&initcwndbps=2558750&bui=AW-iu_oHm3l1X1qDH4xWTduQKvLY8pxgZLrhnURbFhqO468SbeXbeGCERDlMr4EGRDYyZIUgQUXamREc&spc=q5xjPMVhmh3B2eV1usVD-WSlLpetSvrzv-yQah72qJdtH-CrN1JY3wPIaer-lDNEZhc&vprv=1&svpuc=1&mime=video%2Fmp4&rqh=1&gir=yes&clen=115490219&ratebypass=yes&dur=2494.960&lmt=1770250771348565&mt=1770373556&fvip=4&fexp=51552689%2C51565116%2C51565681%2C51580968&c=ANDROID&txp=5538534&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Crqh%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AJEij0EwRAIgDKJ3C1nNCCcgjbdUsJaufiz4ljG7MffafEH3ghmxwNQCIEM15kvqg9hKoOvfbblywPqYzilSkNLZKeLqJcsHs27F&lsparams=cps%2Cmet%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=APaTxxMwRgIhAM0fMQV1p-JjCdlCUdQ-TIMHhxiezWXtdgjK7FoAYaNjAiEA8EMl58M0Li_P2kbcQ3-7oQ5mnIS06z2l2CM9v5I2iUw%3D",
+      "width": 640,
+      "height": 360,
+      "lastModified": "1770250771348565",
+      "contentLength": "115490219",
+      "quality": "medium",
+      "fps": 30,
+      "projectionType": "RECTANGULAR",
+      "averageBitrate": 370315,
+      "audioQuality": "AUDIO_QUALITY_LOW",
+      "approxDurationMs": "2494960",
+      "audioSampleRate": "44100",
+      "audioChannels": 2,
+      "qualityOrdinal": "QUALITY_ORDINAL_360P",
+      "hasVideo": true,
+      "hasAudio": true,
+      "container": "mp4",
+      "codecs": "avc1.42001E, mp4a.40.2",
+      "videoCodec": "avc1.42001E",
+      "audioCodec": "mp4a.40.2",
+      "isLive": false,
+      "isHLS": false,
+      "isDashMPD": false
+    }
+  ],
+  "_updatedAt": {
+    "$date": "2026-02-06T10:32:10.182Z"
+  },
+  "path": "/home/stuurgurs/media/temp/VgRdvLhYD6Y.mp4",
+  "champ": "ttouXPNRpm3X2y5KK",
+  "team": "single",
+  "balls": 1,
+  "cache": true,
+  "slave": 50,
+  "frames": 74846,
+  "isProcessed": true,
+  "lastTrackFrame": 0,
+  "mid": "qDK9iRNdRZmsCf4P2",
+  "process": 74752,
+  "playersEmb": [
+    {
+      "playerId": "htiiyQ44nJremfF7G",
+      "img": [
+        {
+          "_id": "S6jEdWhnYR5FHj3L5",
+          "playerClusterSim": 0.975571990791117
+        },
+        {
+          "_id": "3dMgR6LGG9qokXPAQ",
+          "playerClusterSim": 0.9742183437143381
+        },
+        {
+          "_id": "uueBc6XXsPeQeuPpM",
+          "playerClusterSim": 0.9525266094640088
+        },
+        {
+          "_id": "JofDFHzaD4zLiQH5p",
+          "playerClusterSim": 0.9415427718979252
+        },
+        {
+          "_id": "zbN5KftXZ4jHtNeqY",
+          "playerClusterSim": 0.9280796569285767
+        }
+      ],
+      "stats": {
+        "shots": 4,
+        "miss": 2,
+        "made": 1,
+        "complex": 0,
+        "strong": 0,
+        "long": 0,
+        "accuracy": 33,
+        "positioning": null,
+        "breaks": 4,
+        "performance": 6000,
+        "duration": 25,
+        "pockets": [
+          {
+            "count": 0,
+            "acc": 0
+          },
+          {
+            "count": 0,
+            "acc": 0
+          },
+          {
+            "count": 0,
+            "acc": 0
+          },
+          {
+            "count": 0,
+            "acc": 0
+          },
+          {
+            "count": 0,
+            "acc": 0
+          },
+          {
+            "count": 0,
+            "acc": 0
+          }
+        ]
+      }
+    },
+    {
+      "playerId": "fZYQSRCiuGytYzeHt",
+      "img": [
+        {
+          "_id": "vJD74iwqTju8ryJYZ",
+          "playerClusterSim": 0.9547609187915767
+        },
+        {
+          "_id": "CkPGGf23d9yiYTXRd",
+          "playerClusterSim": 0.9458602138416532
+        },
+        {
+          "_id": "oadZSwwLtTS2JCKyt",
+          "playerClusterSim": 0.9394814581144237
+        },
+        {
+          "_id": "F7QfFRSuxd5eKN5hf",
+          "playerClusterSim": 0.932384814260139
+        },
+        {
+          "_id": "JMEzeLaRoeDvo4RzW",
+          "playerClusterSim": 0.9255341295967854
+        }
+      ],
+      "stats": {
+        "shots": 31,
+        "miss": 8,
+        "made": 19,
+        "complex": 0,
+        "strong": 0,
+        "long": 0,
+        "accuracy": 70,
+        "positioning": null,
+        "breaks": 0,
+        "performance": null,
+        "duration": 19,
+        "pockets": [
+          {
+            "count": 0,
+            "acc": 0
+          },
+          {
+            "count": 0,
+            "acc": 0
+          },
+          {
+            "count": 7,
+            "acc": 100
+          },
+          {
+            "count": 5,
+            "acc": 75
+          },
+          {
+            "count": 3,
+            "acc": 100
+          },
+          {
+            "count": 4,
+            "acc": 25
+          }
+        ]
+      }
+    }
+  ]
+}
